@@ -33,10 +33,13 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Kết nối tới Server Socket
     // Chú ý URL phải khớp với BE (Vd: http://localhost:4000)
-    const newSocket = io("http://localhost:4000", {
-      transports: ["websocket", "polling"],
-      autoConnect: true,
-    });
+    const newSocket = io(
+      "http://deploydemocliquebe-production.up.railway.app:4000",
+      {
+        transports: ["websocket", "polling"],
+        autoConnect: true,
+      },
+    );
 
     newSocket.on("connect", () => {
       console.log("🟢 Đã kết nối Socket Server", newSocket.id);

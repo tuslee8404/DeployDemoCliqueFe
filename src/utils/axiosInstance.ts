@@ -2,7 +2,7 @@ import axios from "axios";
 import { store } from "@/redux/store";
 import { setAccessToken, logoutSuccess } from "@/redux/authSlice";
 
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "http://deploydemocliquebe-production.up.railway.app:4000";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
