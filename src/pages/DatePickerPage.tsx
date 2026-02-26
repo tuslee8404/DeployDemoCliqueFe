@@ -331,6 +331,8 @@ const DatePickerPage = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
         .dp-root { font-family: 'Nunito', sans-serif; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
       {/* Conflict Modal */}
@@ -378,10 +380,10 @@ const DatePickerPage = () => {
         </div>
       )}
 
-      <div className="dp-root min-h-screen bg-[#fdf6f0] flex justify-center">
-        <div className="w-full max-w-sm flex flex-col min-h-screen relative">
+      <div className="dp-root h-[100dvh] bg-[#fdf6f0] flex justify-center overflow-hidden">
+        <div className="w-full max-w-sm flex flex-col h-full relative">
           {/* ── Top Bar ── */}
-          <div className="flex items-center justify-between px-5 pt-12 pb-4">
+          <div className="flex-none flex items-center justify-between px-5 pt-8 pb-4">
             <button
               onClick={() => navigate(-1)}
               className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors"
@@ -430,7 +432,7 @@ const DatePickerPage = () => {
           ) : (
             <>
               {/* ── Subtitle ── */}
-              <div className="px-5 pb-4">
+              <div className="flex-none px-5 pb-4">
                 <p className="text-[17px] font-bold text-neutral-900 leading-snug">
                   Khi nào bạn có thể đi hẹn hò với{" "}
                   <span className="text-orange-500">{partnerName}</span>?
@@ -446,7 +448,7 @@ const DatePickerPage = () => {
               </div>
 
               {/* ── Legend ── */}
-              <div className="px-5 pb-3 flex items-center gap-4">
+              <div className="flex-none px-5 pb-3 flex items-center gap-4">
                 {[
                   { status: "no" as SlotStatus, label: "Bận" },
                   { status: "yes" as SlotStatus, label: "Rảnh" },
@@ -462,7 +464,7 @@ const DatePickerPage = () => {
               </div>
 
               {/* ── Schedule List ── */}
-              <div className="flex-1 overflow-y-auto px-4 pb-4">
+              <div className="flex-1 overflow-y-auto px-4 pb-2 scrollbar-hide">
                 {schedule.map((day, di) => {
                   return (
                     <div key={di} className="mb-1">
@@ -497,7 +499,7 @@ const DatePickerPage = () => {
               </div>
 
               {/* ── Send Button ── */}
-              <div className="px-5 pb-10 mt-3 bg-[#fdf6f0]">
+              <div className="flex-none px-5 pt-4 pb-8 bg-transparent">
                 <button
                   onClick={handleSend}
                   disabled={loading}
